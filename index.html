@@ -36,6 +36,21 @@
             margin: 20px auto;
             padding: 0 15px;
         }
+        .slideshow {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+        .slideshow img {
+            width: 100%;
+            display: none;
+        }
+        .slideshow img.active {
+            display: block;
+        }
         footer {
             background: #0056b3;
             color: #fff;
@@ -50,6 +65,20 @@
             margin-top: 20px;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let images = document.querySelectorAll(".slideshow img");
+            let currentIndex = 0;
+
+            function showNextImage() {
+                images[currentIndex].classList.remove("active");
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add("active");
+            }
+
+            setInterval(showNextImage, 3000);
+        });
+    </script>
 </head>
 <body>
 
@@ -65,6 +94,12 @@
 </nav>
 
 <div class="container">
+    <div class="slideshow">
+        <img src="back-img-1.jpg" alt="背景图片1" class="active">
+        <img src="back-img-2.jpg" alt="背景图片2">
+        <img src="back-img-3.jpg" alt="背景图片3">
+    </div>
+
     <section id="about">
         <h2>公司简介</h2>
         <p>安康冉东聚才人力资源有限公司是一家位于陕西省安康市白河县的专业人力资源公司。我们致力于为各类企业和工厂提供高效、可靠的人才筛选与输送服务，助力企业发展与员工职业成长。</p>
@@ -84,7 +119,7 @@
     <section id="contact" class="contact">
         <h2>联系方式</h2>
         <p>地址：陕西省安康市白河县人民路85号</p>
-        <p>电话：+86 123-456-7890</p>
+        <p>电话：+86 187-4055-2000</p>
         <p>邮箱：info@rdjc-hr.com</p>
         <p>官网：<a href="http://www.rdjc-hr.com" target="_blank">www.rdjc-hr.com</a></p>
     </section>
